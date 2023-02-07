@@ -6,6 +6,7 @@ namespace LanchoneteMVC
 {
     public class Startup
     {
+        //Teste
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
