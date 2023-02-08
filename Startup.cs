@@ -14,15 +14,19 @@ namespace LanchoneteMVC
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+
+
+        //Aqui vamos configurar os Serviços da aplicação
         public void ConfigureServices(IServiceCollection services)
         {
+            //Controla as Views e os Controladores
             services.AddControllersWithViews();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        //Configura o pipeline de processamento do aplicativo.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            //Verifica se estamos em um ambiente de desenvolvimento.
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
