@@ -28,6 +28,9 @@ namespace LanchoneteMVC
             services.AddControllersWithViews();
 
             //Registrando Serviços
+            /*Com esse registro, toda vez que eu solicitar uma instancia referenciando a interface,
+             o conteiner nativo da injeçao de dependencia vai criar uma instancia da classe vai injetar no 
+            contrutor aonde eu estiver solicitando  a instancia do repositorio.*/
             services.AddTransient<ILancheRepository, LancheRepository>();
             services.AddTransient<ICategoriaRepositoy, CategoriaRepository>();
         }

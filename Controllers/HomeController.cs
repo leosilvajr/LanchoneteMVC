@@ -9,6 +9,8 @@ namespace LanchoneteMVC.Controllers
 
         public IActionResult Index()
         {
+            //Consigo chamar em qualquer View
+            //TempData["Nome"] = "Teste";
             return View();
         }
 

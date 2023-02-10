@@ -9,6 +9,7 @@ namespace LanchoneteMVC.Repositories
     {
         private readonly AppDbContext _context;
 
+
         //ctor + tab+tab
         public LancheRepository(AppDbContext contexto)
         {
