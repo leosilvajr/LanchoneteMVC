@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Localization;
+﻿using LanchoneteMVC.Context;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Globalization;
 
 namespace LanchoneteMVC
@@ -19,6 +21,7 @@ namespace LanchoneteMVC
         //Aqui vamos configurar os Serviços da aplicação
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             //Controla as Views e os Controladores
             services.AddControllersWithViews();
         }
