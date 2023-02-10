@@ -13,6 +13,6 @@ namespace LanchoneteMVC.Repositories
             _context = context;
         }
 
-        public IEnumerable<Categoria> Categoras => _context.Categorias;
+        public IEnumerable<Categoria> Categorias => _context.Categorias;
     }
 }

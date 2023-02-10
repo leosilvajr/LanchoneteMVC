@@ -4,6 +4,6 @@ namespace LanchoneteMVC.Repositories.Interfaces
 {
     public interface ICategoriaRepositoy
     {
-        IEnumerable<Categoria> Categoras { get; }
+        IEnumerable<Categoria> Categorias { get; }
     }
 }

@@ -7,6 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Antoacoes\InjecaoDependencia.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Antoacoes\InjecaoDependencia.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\img\" />
   </ItemGroup>
 
