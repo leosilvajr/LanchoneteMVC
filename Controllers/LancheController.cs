@@ -1,4 +1,5 @@
 ﻿using LanchoneteMVC.Repositories.Interfaces;
+using LanchoneteMVC.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LanchoneteMVC.Controllers
@@ -15,15 +16,14 @@ namespace LanchoneteMVC.Controllers
 
         public IActionResult List()
         {
-            ViewData["Titulo"] = "Todos os Lanches";
-            ViewData["Data"] = DateTime.Now;
-            var lanches = _lancheRepository.Lanches;
+            //var lanches = _lancheRepository.Lanches;
+            //return View(lanches);
 
-            var totalLanches = lanches.Count();
-            ViewBag.Total = "Total de Lanches: ";
-            ViewBag.TotalLanches = totalLanches;
+            var lanchesListViewModel = new LancheListViewModel();
+            lanchesListViewModel.Lanches = _lancheRepository.Lanches;
+            lanchesListViewModel.CategoriaAtual = "Categoria Atual";
 
-            return View(lanches);
+            return View(lanchesListViewModel);  
         }
     }
 }
