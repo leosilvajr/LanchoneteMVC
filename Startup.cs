@@ -1,4 +1,5 @@
 ﻿using LanchoneteMVC.Context;
+using LanchoneteMVC.Models;
 using LanchoneteMVC.Repositories;
 using LanchoneteMVC.Repositories.Interfaces;
 using Microsoft.AspNetCore.Localization;
@@ -38,6 +39,7 @@ namespace LanchoneteMVC
 
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped(sp => CarrinhoCompra.GetCarrinho(sp));
             
             services.AddMemoryCache();
             services.AddSession();
