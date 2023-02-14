@@ -16,6 +16,7 @@ namespace LanchoneteMVC.Controllers
 
         public IActionResult List()
         {
+
             //var lanches = _lancheRepository.Lanches;
             //return View(lanches);
 

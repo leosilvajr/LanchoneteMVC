@@ -17,5 +17,6 @@ namespace LanchoneteMVC.Context
         //Mapiar classe para tabela
         public DbSet <Categoria> Categorias { get; set; }
         public DbSet <Lanche> Lanches { get; set; }
+        public DbSet <CarrinhoCompraItem> CarrinhoCompraItens { get; set; }
     }
 }
