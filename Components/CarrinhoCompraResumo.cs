@@ -18,6 +18,7 @@ namespace LanchoneteMVC.Components
         {
             var itens = _carrinhoCompra.GetCarrinhoCompraItems();
 
+
             _carrinhoCompra.CarrinhoCompraItems = itens;
 
             var carrinhoCompraVM = new CarrinhoCompraViewModel
