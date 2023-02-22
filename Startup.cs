@@ -34,6 +34,8 @@ namespace LanchoneteMVC
             contrutor aonde eu estiver solicitando  a instancia do repositorio.*/
             services.AddTransient<ILancheRepository, LancheRepository>();
             services.AddTransient<ICategoriaRepositoy, CategoriaRepository>();
+            services.AddTransient<IPedidoRepository, PedidoRepository>();
+
 
             //Com isso, atravez de um serviço recuperar uma instancia de HTTP Context Acessor
 

@@ -1,60 +1,40 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
-
-@*Cabeçalho*@
+<html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - LanchoneteMVC</title>
+    <title>Minha Aplicação</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/LanchoneteMVC.styles.css" asp-append-version="true" />
-</head>
-
-
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Lumex Lanches</a>
-                    @await Component.InvokeAsync("CategoriaMenu")
-@*                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>*@
-                <div class="navbar-collapse">
-                    @await Component.InvokeAsync("CarrinhoCompraResumo")
-                    
-                    <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    @*<a class="nav-link text-light" asp-area="" asp-controller="Lanche" asp-action="List">Lanches</a>*@
-                    <a class="nav-link text-light" asp-area="" asp-controller="Contato" asp-action="Index">Contato</a>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-
-    <div class="container">
-        <main role="main" class="pb-3">
-
-
-            @RenderBody() @*É AQUI QUE SÃO EXIBIDO OS CONTEUDOS DAS VIEWS*@
-
-
-
-        </main>
-    </div>
-
-
-    @*Rodapé*@
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - LanchoneteMVC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="d-flex" id="wrapper">
+        <!-- Menu Lateral -->
+        <div class="bg-light border-right" id="sidebar-wrapper">
+            <div class="sidebar-heading">Minha Aplicação</div>
+            <div class="list-group list-group-flush">
+                <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">Perfil</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">Configurações</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">Ajuda</a>
+            </div>
+        </div>
+        <!-- Conteúdo Principal -->
+        <div id="page-content-wrapper">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                <button class="btn btn-primary" id="menu-toggle">Menu</button>
+            </nav>
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <script>
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
 </body>
 </html>
