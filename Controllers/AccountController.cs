@@ -1,4 +1,5 @@
 ﻿using LanchoneteMVC.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,12 +17,14 @@ namespace LanchoneteMVC.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Login(string returnUrl)
         {
             return View(new LoginViewModel { ReturnUrl = returnUrl });   
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult>Login(LoginViewModel loginVM)
         {
             if (!ModelState.IsValid)
@@ -49,6 +52,7 @@ namespace LanchoneteMVC.Controllers
             return View(loginVM);
         }
 
+        [AllowAnonymous]
         public IActionResult Register()
         {
             return View();
@@ -73,6 +77,16 @@ namespace LanchoneteMVC.Controllers
                 }
             }
             return View(registroVM);
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            HttpContext.Session.Clear();
+            HttpContext.User = null;
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

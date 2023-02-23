@@ -1,6 +1,7 @@
 ﻿using LanchoneteMVC.Models;
 using LanchoneteMVC.Repositories.Interfaces;
 using LanchoneteMVC.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LanchoneteMVC.Controllers
@@ -38,24 +39,32 @@ namespace LanchoneteMVC.Controllers
 
         public RedirectToActionResult AdicionarItemNoCarrinhoCompra(int lancheId)
         {
-            var lancheSelecionado = _lancheRepository.Lanches.FirstOrDefault(p => p.LancheId == lancheId);
-            if (lancheSelecionado != null)
+            if (User.Identity.IsAuthenticated)
             {
-                _carrinhoCompra.AdicionarAoCarrinho(lancheSelecionado);
+                var lancheSelecionado = _lancheRepository.Lanches.FirstOrDefault(p => p.LancheId == lancheId);
+                if (lancheSelecionado != null)
+                {
+                    _carrinhoCompra.AdicionarAoCarrinho(lancheSelecionado);
+                    return RedirectToAction("Index"); 
+                }
             }
-
-            return RedirectToAction("Index");
+            return RedirectToAction("Login", "Account");
         }
+
 
         public IActionResult RemoverItemDoCarrinhoCompra(int lancheId)
         {
-            var lancheSelecionado = _lancheRepository.Lanches.FirstOrDefault(p => p.LancheId == lancheId);
-
-            if (lancheSelecionado != null)
+            if (User.Identity.IsAuthenticated)
             {
-                _carrinhoCompra.RemoverDoCarrinho(lancheSelecionado);
+                var lancheSelecionado = _lancheRepository.Lanches.FirstOrDefault(p => p.LancheId == lancheId);
+
+                if (lancheSelecionado != null)
+                {
+                    _carrinhoCompra.RemoverDoCarrinho(lancheSelecionado);
+                    return RedirectToAction("Index"); 
+                }
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Login", "Account");
         }
     }
 }

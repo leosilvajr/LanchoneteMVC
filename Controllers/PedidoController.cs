@@ -1,5 +1,6 @@
 ﻿using LanchoneteMVC.Models;
 using LanchoneteMVC.Repositories.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LanchoneteMVC.Controllers
@@ -18,6 +19,7 @@ namespace LanchoneteMVC.Controllers
 
         //Get que apresenta o Formulário
         [HttpGet]
+        [Authorize]
         public IActionResult Checkout()
         {
             return View();
@@ -26,6 +28,7 @@ namespace LanchoneteMVC.Controllers
 
         //Post que processa o formulário;
         [HttpPost]
+        [Authorize]
         public IActionResult Checkout(Pedido pedido)
         {
             int totalItensPedido = 0;

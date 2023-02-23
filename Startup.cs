@@ -32,6 +32,16 @@ namespace LanchoneteMVC
             //Adicionando o Serviço do Identity
             services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
+            //services.Configure<IdentityOptions>(o =>
+            //{
+            //    //Definições para padrao de Senha
+            //    o.Password.RequireDigit = true;
+            //    o.Password.RequireLowercase = true;
+            //    o.Password.RequireNonAlphanumeric = false;
+            //    o.Password.RequireUppercase = false;
+            //    o.Password.RequiredLength = 3;
+            //    o.Password.RequiredUniqueChars = 1;
+            //});
 
 
 
@@ -77,6 +87,9 @@ namespace LanchoneteMVC
 
             app.UseAuthorization();
 
+            app.UseSession();
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             //Roteamento padrão
             app.UseEndpoints(endpoints =>
