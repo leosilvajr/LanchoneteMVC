@@ -2,6 +2,7 @@
 using LanchoneteMVC.Models;
 using LanchoneteMVC.Repositories;
 using LanchoneteMVC.Repositories.Interfaces;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -27,6 +28,12 @@ namespace LanchoneteMVC
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             //Controla as Views e os Controladores
             services.AddControllersWithViews();
+
+            //Adicionando o Serviço do Identity
+            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
+
+
+
 
             //Registrando Serviços
             /*Com esse registro, toda vez que eu solicitar uma instancia referenciando a interface,

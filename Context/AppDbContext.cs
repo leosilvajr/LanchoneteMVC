@@ -1,4 +1,6 @@
 ﻿using LanchoneteMVC.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace LanchoneteMVC.Context
@@ -6,7 +8,7 @@ namespace LanchoneteMVC.Context
     //Adicioanr o DBContext sempre que adicionarmos o Model 
     //Classe de Contexto carrega informações de configurações e define quais as que estou mapiando para as tabelas
 
-    public class AppDbContext : DbContext //Herdar  DbContext do EntityFrameworkCore
+    public class AppDbContext : IdentityDbContext<IdentityUser> //Configurando o Identity do Projeto
     {
 
         //Criando Construtor
